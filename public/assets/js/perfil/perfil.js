@@ -1,5 +1,8 @@
 /*Datatable*/
 $(document).ready (function() {
+    datatable();
+});
+function datatable(){
     $.ajax({
         url: "/perfil/rellenarTabla",
         success : function(data) {
@@ -17,8 +20,7 @@ $(document).ready (function() {
             });
         }       
     });
-});
-
+}
 $.ajaxSetup({
     headers: {
         'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
@@ -39,6 +41,10 @@ function data(){
 /*Crear*/
 $( '#button' ).click(function() {
     crearPerfil();
+    $('#example').DataTable().clear();
+    $('#example').DataTable().destroy();
+    datatable();
+table.ajax.reload();
 });
 function crearPerfil(){
     $.ajax({
