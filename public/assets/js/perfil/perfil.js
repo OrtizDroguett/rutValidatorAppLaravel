@@ -39,8 +39,6 @@ function data(){
 /*Crear*/
 $( '#button' ).click(function() {
     crearPerfil();
-    var table = $('#userInventory').dataTable();
-table.ajax.reload();
 });
 function crearPerfil(){
     $.ajax({
