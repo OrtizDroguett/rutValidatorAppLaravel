@@ -44,7 +44,6 @@ $( '#button' ).click(function() {
     $('#example').DataTable().clear();
     $('#example').DataTable().destroy();
     datatable();
-table.ajax.reload();
 });
 function crearPerfil(){
     $.ajax({
@@ -56,6 +55,16 @@ function crearPerfil(){
         },
         success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
                 $("#resultado").html(response);
+        },
+        error: function(request){
+            let json=request.responseJSON;
+            console.log(json);
+            console.log(json['errors'].hasOwnProperty('rut'));
+            if(json['errors'].hasOwnProperty('rut')){
+                $("#errorRut").html(json['errors']['rut'][0]);
+            }else{
+                $("#errorRut").html("");
+            }
         }
 });
 }

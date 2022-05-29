@@ -6,6 +6,7 @@
     <div class="col-6">
         <label for="rutTxt">Rut</label>
         <input id="rutTxt" class=" form-control">
+        <label class="text-danger" id="errorRut"></label>
     </div>
     <!-- Nombre-->
     <div class="col-6">
