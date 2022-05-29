@@ -1,3 +1,4 @@
+/*Datatable*/
 $(document).ready (function() {
     $.ajax({
         url: "/perfil/rellenarTabla",
@@ -12,11 +13,48 @@ $(document).ready (function() {
                         {"data" : "apellidoMaterno"},
                         {"data" : "telefono"},
                         {"data" : "comuna"}            
-                ],
+                ]
             });
         }       
     });
 });
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+/*Data*/
+function data(){
+    const data={
+        rut:$('#rutTxt').val(),
+        nombre:$('#nombreTxt').val(),
+        apellidoPaterno:$('#apellidoPaternoTxt').val(),
+        apellidoMaterno:$('#apellidoMaternoTxt').val(),
+        telefono:$('#telefonoTxt').val(),
+        comuna:$('#comunaSelect').val()
+    };
+    return data;
+}
+/*Crear*/
+$( '#button' ).click(function() {
+    crearPerfil();
+    var table = $('#userInventory').dataTable();
+table.ajax.reload();
+});
+function crearPerfil(){
+    $.ajax({
+        data:  data(), //datos que se envian a traves de ajax
+        url:   '/perfil/store', //archivo que recibe la peticion
+        type:  'post', //método de envio
+        beforeSend: function () {
+                $("#resultado").html("Procesando, espere por favor...");
+        },
+        success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+                $("#resultado").html(response);
+        }
+});
+}
 /*
 $('#example').dataTable( {
     data : jsonObject,
@@ -33,22 +71,10 @@ $('#example').dataTable( {
 
 });
 */
-function data(){
-    const data={
-        rut:$('#rutTxt').val(),
-        nombre:$('#nombreTxt').val(),
-        apellidoPaterno:$('#apellidoPaternoTxt').val(),
-        apellidoMaterno:$('#apellidoMaternoTxt').val(),
-        telefono:$('#telefonoTxt').val(),
-        comuna:$('#comunaSelect').val()
-    };
-    return data;
-}
 
 
-$( '#button' ).click(function() {
-    console.log(data());
-});
+
+
 /*$( '#button' ).click(function() {
     alert("test");
 

@@ -13,7 +13,7 @@ class CreatePerfilRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class CreatePerfilRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'rut'=>'required',
+            'nombre'=>'required',
+            'apellidoPaterno'=>'required',
+            'apellidoMaterno'=>'required',
+            'telefono'=>'required',
+            'comuna'=>'required'
         ];
     }
 }

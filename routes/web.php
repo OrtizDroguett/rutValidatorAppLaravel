@@ -20,6 +20,6 @@ Route::get('/', function () {
 
 Route::group(['prefix'=>'perfil'], function(){
     Route::get('/', [PerfilController::class,'index'])->name('perfil.index');
-    Route::get('/test',[PerfilController::class,'store']);
+    Route::post('/store',[PerfilController::class,'store']);
     Route::get('/rellenarTabla',[PerfilController::class,'rellenarTabla']);
 });

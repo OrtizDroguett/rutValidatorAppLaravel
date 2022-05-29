@@ -1,3 +1,5 @@
+<meta name="csrf-token" content="{{ csrf_token() }}" />
+
 <!-- Fila -->
 <div class="row">
     <!-- Rut-->

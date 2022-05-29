@@ -19,9 +19,8 @@
       </ul>
       <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
-            <form action="" id="formPerfil">
+           
                 @include('perfil.tabs.formularioPerfil')
-            </form>
         </div>
         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
             En proceso
@@ -40,5 +39,12 @@
 
 @section('scripts')
 <script src="{{asset('assets/js/jquery.dataTables.min.js')}}"></script>
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    </script>
 <script src="{{asset('assets/js/perfil/perfil.js')}}"></script>
 @endsection
