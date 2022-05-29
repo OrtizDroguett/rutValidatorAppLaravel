@@ -6,6 +6,15 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
+## Instalación
+Proyecto construido en php 7.4.28
+1-composer install
+2-Creación de archivo .env
+3-Escribir en consola php artisan key:generate
+4-Creación de base de datos
+5-Cambiar la base de datos en el .env
+6-Escribir en consola php artisan migration:fresh
+
 
 ## About Laravel
 
